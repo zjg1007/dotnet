@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/localStore/store.min.js"></script>
+
+</head>
+<body>
+    <div class="">
+        <h3>登录系统</h3>
+        <input id="userName" name="userName" type="text" placeholder="请输入用户名" value="">
+        <br />
+        <input id="password" name="password" type="password" placeholder="请输入密码" value="">
+        <br />
+        <input type="checkbox" checked id="rememberMe">
+        <span class="check"></span>
+        <span class="caption">记住我的登录凭证</span>
+        <br />
+        <input type="checkbox" id="autoLogin">
+        <span class="check"></span>
+        <span class="caption">自动登录</span>
+        <br />
+        <button onclick="javascript: logon()"> 登录 </button>
+        <br /><br />
+        <div id="logonStatusPrompt" style="color:red">
+        </div>
+        用户名：tiger  密码：123@Abc
+        <br /><br />
+    </div>
+
+</body>
+</html>
+
+<script>
+    init()
+    function init() {
+        if (!store.enabled) {
+            alert('你的浏览器不支持本地存储。')
+            return
+        }
+    }
+
+    $(function () {
+
+        // 检查本地存储的用户数据
+        var storeUser = store.get('rememberMe');
+        if (storeUser != null) {
+            document.getElementById('userName').value = storeUser.userName;
+            document.getElementById('password').value = storeUser.password;
+            document.getElementById('rememberMe').checked = true;
+        }
+
+        // 检查本地存储的自动登录
+        var autologin = store.get('autoLogin');
+        if (autologin != null) {
+            if (autologin.autoLogon == 'true') {
+                document.getElementById('autoLogin').checked = true;
+            }
+        }
+        // 检查是否自动登录系统
+        if (document.getElementById('autoLogin').checked == true) {
+            logon();
+        }
+
+    });
+
+
+    function logon() {
+        var userName = document.getElementById('userName').value;
+        var password = document.getElementById('password').value;
+        if (userName == '' || password == '') {
+            document.getElementById('logonStatusPrompt').innerHTML = "<span style='font-family:\"Microsoft YaHei\";'> 用户名或者密码不能为空值!</span>";
+        } else {
+            var logonQueryJson = '{UserName:\"' + userName + '\", ' + 'Password:\"' + password + '\",ScreenWidth:\"' + document.body.clientWidth + '\",ScreenHeight:\"' + document.body.clientHeight + '\"}';
+
+            // 对于一般的 ajax 方法，请按照以下的方式统一编写代码
+            var urlString = 'api/person';
+            var jsonData = { 'logonQueryJson': logonQueryJson };
+            var statusElementID = "logonStatusPrompt";
+            var statusMessage = "<div class='mif-spinner mif-ani-spin mif-1x'></div> <span style='font-family:\"Microsoft YaHei\";'>正在登录系统 ...</span>";
+
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                async: true,
+                url: urlString,
+                data: jsonData,
+                dataType: 'json',
+                beforeSend: function () {
+                    $('#' + statusElementID).html(statusMessage);
+                }
+            }).done(function (data) {
+                var isLogon = data.IsLogon;
+                if (isLogon) {
+
+                    // 检查是否记住登录令牌
+                    if (document.getElementById('rememberMe').checked == true) {
+                        store.set('rememberMe', { userName: userName, password: password });
+                    } else {
+                        store.set('rememberMe', { userName: '', password: '' });
+                    }
+                    // 检查是否自动登录
+                    if (document.getElementById('autoLogin').checked == true) {
+                        store.set('autoLogin', { autoLogon: 'true' });
+                    } else {
+                        store.set('autoLogin', { autoLogon: 'false' });
+                    }
+                    window.location.href = data.Message;
+                } else {
+                    document.getElementById('logonStatusPrompt').innerHTML = data.Message;
+                }
+            }).fail(function () {
+            }).always(function () {
+
+            });
+        }
+    }
+
+
+</script>

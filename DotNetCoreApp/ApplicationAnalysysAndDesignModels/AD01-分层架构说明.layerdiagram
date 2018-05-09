@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="80a601f1-4e80-4d1e-b60d-88e9d4e88ca3" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="54f7afa7-2e27-4e8d-b322-857f8e65668f" name="业务实体模型" />
+    <layer Id="c38c9865-3e1f-4b0e-bcf7-bbdd6c775491" name="数据持久化处理服务">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="1b3884a6-c303-43a1-bb3c-81b910602e87" direction="Forward">
+          <layerMoniker Id="54f7afa7-2e27-4e8d-b322-857f8e65668f" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="91d442cb-52ab-4f34-871e-6a432070d5c7" name="业务实体视图模型">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="754b93c0-af23-4655-8d8e-3c4cbc2da2ef" direction="Forward">
+          <layerMoniker Id="54f7afa7-2e27-4e8d-b322-857f8e65668f" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="dc06c633-7a57-4d23-9bff-c66899ddee8f" direction="Forward">
+          <layerMoniker Id="c38c9865-3e1f-4b0e-bcf7-bbdd6c775491" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="2e8c5314-8c82-4cbc-aa5e-bbabfe01f9fc" name="业务应用管理前端">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="dd561795-c7fb-4124-bdb0-2efe27562c46" direction="Forward">
+          <layerMoniker Id="91d442cb-52ab-4f34-871e-6a432070d5c7" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="0ed55543-b9cf-4f5b-b6e6-21e6b476c01e" direction="Forward">
+          <layerMoniker Id="54f7afa7-2e27-4e8d-b322-857f8e65668f" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="17ad8fa0-5f60-4665-b86a-416dbcb39995" direction="Forward">
+          <layerMoniker Id="c38c9865-3e1f-4b0e-bcf7-bbdd6c775491" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="3c48b337-b939-4542-96a1-88ea22c30e6d" name="业务实体WebAPI模型">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="139112c5-bb6b-403d-8f9b-0a31d47e7ee9" direction="Forward">
+          <layerMoniker Id="c38c9865-3e1f-4b0e-bcf7-bbdd6c775491" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="13cfda47-be3a-4624-b445-f50a82bfabb9" direction="Forward">
+          <layerMoniker Id="54f7afa7-2e27-4e8d-b322-857f8e65668f" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="27560c75-8933-4ac3-94e8-7322c265f8c2" name="公共数据服务 API Service 系统">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="af9c6f8c-55bb-4740-bd72-10b4b3818ab1" direction="Forward">
+          <layerMoniker Id="3c48b337-b939-4542-96a1-88ea22c30e6d" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="94fce1c4-ad9c-43c5-9a5f-c4a131ad3f86" direction="Forward">
+          <layerMoniker Id="c38c9865-3e1f-4b0e-bcf7-bbdd6c775491" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="f5a01c1d-8541-420e-a129-d06da34654b0" direction="Forward">
+          <layerMoniker Id="54f7afa7-2e27-4e8d-b322-857f8e65668f" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="a1fc7e73-4054-492c-bcbd-eb45d59e64f1" name="移动App">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="96615bbe-55f4-4708-aa4d-315e5a7adbf5" direction="Forward">
+          <layerMoniker Id="27560c75-8933-4ac3-94e8-7322c265f8c2" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+  </layers>
+</layerModel>

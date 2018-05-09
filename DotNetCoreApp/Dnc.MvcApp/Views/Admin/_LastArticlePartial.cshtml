@@ -1,0 +1,19 @@
+﻿@using Dnc.MvcApp.ViewInjections
+@inject ArticleInjection articleItems
+
+<div class="list-group">
+    <a asp-controller="Article" 
+       asp-action="LastNews" 
+       class="list-group-item active">
+        最新新闻
+    </a>
+    @foreach (var item in articleItems.GetArticleCollection())
+    {
+        <a asp-controller="Article"
+           asp-action="Detail"
+           asp-route-id="@item.ID"
+           class="list-group-item">
+            @item.Name
+        </a>
+    }
+</div>

@@ -1,0 +1,20 @@
+﻿
+@using Dnc.MvcApp.ViewComponentModels.NavBar
+@model LeftNavBarViewModel
+
+<ul class="nav nav-sidebar">
+    <li class="active">
+        <a href="#">
+            用户管理
+            <span class="sr-only">(current)</span>
+        </a>
+    </li>
+    @foreach (var item in Model.NavBarItems)
+    {
+        <li>
+            <a href="@item.Url">
+                @item.Name
+            </a>
+        </li>
+    }
+</ul>

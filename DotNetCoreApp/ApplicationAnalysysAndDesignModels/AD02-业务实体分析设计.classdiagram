@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="9eb1fd5f-c9b4-4829-88cd-b98e041ed494" name="AD02-业务实体分析设计" linkedPackageId="84e0ae13-c582-4971-a96e-cf8ad91d182b" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="772476e8-1da8-4d63-9b0a-a82fd4bf60a3">
+      <profileInstance Id="861849a0-4e0e-48a9-9a35-5a9889941359" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="81d4f208-f64b-4798-ba9d-71c72ec5d208">
+      <profileInstance Id="a89ec096-152e-42c4-98e3-bec5f3f589ee" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9fc7bd13-8fac-4b0f-a0ee-eaf3950eb501" name="文章类型" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="226f79bb-54a2-4197-a007-11b676cbe8d7" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3d078ef9-b612-4496-ad71-ee0737e680b2" name="文章" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3359cefa-062a-4449-b5d0-280dccb27e22" />
+        <targetEnds>
+          <association Id="b7756fb0-d182-4a2c-8b19-1e3942c3d720" isDerived="false" sourceEndRoleName="文章" targetEndRoleName="文章类型" isLeaf="false" isAbstract="false">
+            <classMoniker Id="9fc7bd13-8fac-4b0f-a0ee-eaf3950eb501" LastKnownName="文章类型" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6229bb5d-2df5-4443-9fe4-6c024236f056" name="文章" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="1f0386cb-2d02-4420-ace0-91261140f2dd" name="Lower" value="0">
+                      <elementDefinition Id="f4e11d11-e253-4173-b81b-1cb52ab667e7" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="ff916ab5-c02c-4df9-935e-efa4af46c97a" name="Upper" value=".n">
+                      <elementDefinition Id="71fbf641-3e69-4af6-b0f4-b337a7979678" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="32432f54-3fc3-4b14-a86b-6f7a00a37f21" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="97fbc96b-ca8a-4272-bd3d-54c06a720864" name="文章类型" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4881194d-32f6-4e47-be8f-7bb3ea961c7a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="cc8217ba-40a7-4e33-8aa5-d994e954b322" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="84e0ae13-c582-4971-a96e-cf8ad91d182b" name="ApplicationAnalysysAndDesignModels">
+    <elementDefinition Id="3421d907-3085-420e-97ef-abd884aeefaf" />
+  </package>
+</logicalClassDesignerModel>

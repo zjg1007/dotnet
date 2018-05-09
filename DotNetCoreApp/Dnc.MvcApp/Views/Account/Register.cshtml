@@ -1,0 +1,83 @@
+﻿@model Dnc.MvcApp.ViewModels.RegisterViewModel
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="page-header">注册用户资料</h1>
+
+<form id="formRegister" asp-controller="Account" asp-action="Register" 
+      asp-route-returnurl="@ViewData["ReturnUrl"]" 
+      method="post" class="form-horizontal">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="UserName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="FullName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">注册</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script type="text/javascript">
+    //    $(document).ready(function () {
+    //        $("#formRegister").submit(function (e) {
+
+    //            $form = $("#formRegister");
+
+    //            if ($form.valid())
+    //            {
+    //                alert(1);
+    //                $.ajax({
+    //                    type: $form.attr('method'),
+    //                    url: $form.attr('action'),
+    //                    dataType: 'application/x-www-form-urlencoded; charset=utf-8',
+    //                    data: $form.serialize(), // 序列化 Form 数据。
+    //                    cache: false,
+    //                    success: function (result) {
+    //                        alert(result); 
+    //                    },
+    //                    statusCode: {
+    //                        201: function (result) {
+    //                            alert("问题 201");
+    //                        },
+    //                        404:
+    //                             function () {
+    //                                 alert("问题404");
+    //                             }
+    //                    }
+    //                });
+
+    //                e.preventDefault(); // 阻止 Form 的 submit 操作
+    //            }
+
+    //        });
+    //});
+    </script>
+}

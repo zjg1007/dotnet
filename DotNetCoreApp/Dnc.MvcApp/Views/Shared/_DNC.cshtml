@@ -1,0 +1,86 @@
+﻿@using Dnc.MvcApp.ViewComponents.NavBar;
+@using Dnc.MvcApp.ViewComponents.UserLogon;
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Session;
+
+@{ 
+// 一些简单的状态处理（例如用户是否在线）
+//var isUserOnline = false;
+//var userID = ViewBag.UserID;
+//if (!String.IsNullOrEmpty(userID))
+//{
+//    isUserOnline = true;
+//}
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>企业资讯周刊后台管理信息系统</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/dnc.css" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">企业资讯周刊后台管理系统</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">用户管理</a></li>
+                    <li><a asp-controller="articleType" asp-action="index">文章管理</a></li>
+                    <li><a href="#">系统日志</a></li>
+                    <li><a href="javascript:openLogon()">帮助</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="查询...">
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                @await Component.InvokeAsync("LeftNavBar")
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @*@await Component.InvokeAsync("Logon");*@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/lib/jquery.form.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+    <script src="~/js/dncApp.js"></script>
+
+    <script>
+        @*if('@isUserOnline' !== 'True'){
+            $('#logonModal').modal({ backdrop: 'static', keyboard: false });
+            $('#logonModal').modal('show')
+        }*@
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

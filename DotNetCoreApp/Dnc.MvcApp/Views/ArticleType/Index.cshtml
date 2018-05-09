@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Dnc.MvcApp.ViewModels.ArticleTypeVM>
+@{
+    Layout = "_DNC";
+}
+
+<h2 class="sub-header">文章类型管理</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th style="width:50px">编号</th>
+                <th style="width:150px">文章类型 </th>
+                <th>简要说明</th>
+                <th style="width:120px">业务编码</th>
+                <th style="width:80px">数据操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td></td>
+                    <td>@item.Name</td>
+                    <td>@item.Decription</td>
+                    <td>@item.SortCode</td>
+                    <td>
+                        <a asp-controller="ArticleType" asp-action="Edit" asp-route-id="@item.ID" class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </a>
+                        <a asp-controller="ArticleType" asp-action="Detail" asp-route-id="@item.ID" class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        </a>
+                        <a asp-controller="ArticleType" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
