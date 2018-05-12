@@ -50,7 +50,7 @@ namespace Dnc.Services
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(60);
-                options.CookieName = ".MyCoreApp";
+                options.Cookie.Name = ".MyCoreApp";
             });
 
 

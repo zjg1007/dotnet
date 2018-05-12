@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div style="padding:24px 0">
+    <h3>支付宝 电脑网站支付 - <a href="https://docs.open.alipay.com/270/alipay.trade.page.pay" target="_blank">API文档</a></h3>
+    <hr />
+    <form asp-controller="Alipay" asp-action="PagePay" target="_blank">
+        <div class="form-group">
+            <label>body:</label>
+            <input type="text" class="form-control" name="body" value="支付宝网站支付测试详情">
+        </div>
+        <div class="form-group">
+            <label>subject:</label>
+            <input type="text" class="form-control" name="subject" value="支付宝网站支付测试">
+        </div>
+        <div class="form-group">
+            <label>total_amount:</label>
+            <input type="text" class="form-control" name="total_amount" value="0.01">
+        </div>
+        <div class="form-group">
+            <label>out_trade_no:</label>
+            <input type="text" class="form-control" name="out_trade_no" value="@DateTime.Now.ToString("yyyyMMddHHmmssfff")">
+        </div>
+        <div class="form-group">
+            <label>product_code:</label>
+            <input type="text" class="form-control" name="product_code" value="FAST_INSTANT_TRADE_PAY">
+        </div>
+        <div class="form-group">
+            <label>notify_url(通知Url需外网环境可访问):</label>
+            <input type="text" class="form-control" name="notify_url" value="http://xxx.com/alipay/pagepaynotify">
+        </div>
+        <div class="form-group">
+            <label>return_url:</label>
+            <input type="text" class="form-control" name="return_url" value="http://xxx.com/alipay/pagepayreturn">
+        </div>
+        <button type="submit" class="btn btn-primary">提交</button>
+    </form>
+</div>

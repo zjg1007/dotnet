@@ -10,6 +10,7 @@ using Dnc.MvcApp.Utilities;
 using Dnc.DataAccessRepository.Context;
 using Dnc.DataAccessRepository.Repositories;
 using Dnc.DataAccessRepository.Seeds;
+using Essensoft.AspNetCore.Payment.Alipay;
 
 namespace Dnc.MvcApp
 {
@@ -35,7 +36,21 @@ namespace Dnc.MvcApp
             {
                 //options.Filters.Add(typeof(AppAuthorityFilter)); // 类型方式注入
             });
+            // 添加支付宝客户端依赖注入
+            services.AddAlipay(opt =>
+            {
+                //此处为蚂蚁金服开放平台上创建的APPID，而非老版本的商户号
+                opt.AppId = "2017060307410939";
 
+                // 这里的公私钥 默认均为支付宝官方推荐使用的RSAWithSHA256.
+                // 商户私钥
+                opt.RsaPrivateKey = "/ykZcAHxJqW1G+gEG3m4AQ==";
+                // 支付宝公钥
+                opt.RsaPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqx3sTkM63I3hcDKWSWwegy02TmJw5Vcq1NoglDuN9J9A53UycpyAnkCedslG1CID1xwVwEkeoivEvuytu3CEkdMmFM84q65QAAzBa56cd1BykI35Xkv19g/xOsim5QxRfQYG/GlSpW2T++cDA6QI3f5KOnaEL8tUYm6/EkhW2s2WEAg3Xnk28Q2hBM/PxGxfPpThVP9x5b7X26mQ5flfLgi7cwoJZdlfM6kZzKiupxv3yaePaM4onhz6ecW4Z+Mamx9T0ELhepL6OQkw45Nbvzma/kUkFOIOPNP3GdJxFc8LnGy6cmxBb5PMjIbBADj9rMjixa7agifP213iftOOZQIDAQAB";
+            });
+
+            // 注册配置实例
+            services.Configure<AlipayOptions>(Configuration.GetSection("Alipay"));
             // 注入自定义的用户认证过滤器
             services.AddScoped<AppAuthorityFilter>();
 
