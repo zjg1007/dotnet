@@ -1,167 +1,83 @@
-﻿@{ 
-    Layout = "_DNC";
-}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
 
-<h1 class="page-header">公司业务营运数据概况</h1>
-<div class="row placeholders">
-    <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>当前用户数量</h4>
-        <span class="text-muted">10000</span>
-    </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>文件库文章总数</h4>
-        <span class="text-muted">901</span>
-    </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>订阅用户</h4>
-        <span class="text-muted">Something else</span>
-    </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>合作伙伴信息</h4>
-        <span class="text-muted">Something else</span>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-6">
-        @Html.Partial("_LastArticlePartial")
-    </div>
-    <div class="col-md-6">
-        @Html.Partial("_LastArticlePartial")
-    </div>
-</div>
+</head>
 
 
+<body>
 
-@*<h2 class="sub-header">Section title</h2>
-<div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>编号</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
-            </tr>
-            <tr>
-                <td>1,002</td>
-                <td>amet</td>
-                <td>consectetur</td>
-                <td>adipiscing</td>
-                <td>elit</td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td>Integer</td>
-                <td>nec</td>
-                <td>odio</td>
-                <td>Praesent</td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td>libero</td>
-                <td>Sed</td>
-                <td>cursus</td>
-                <td>ante</td>
-            </tr>
-            <tr>
-                <td>1,004</td>
-                <td>dapibus</td>
-                <td>diam</td>
-                <td>Sed</td>
-                <td>nisi</td>
-            </tr>
-            <tr>
-                <td>1,005</td>
-                <td>Nulla</td>
-                <td>quis</td>
-                <td>sem</td>
-                <td>at</td>
-            </tr>
-            <tr>
-                <td>1,006</td>
-                <td>nibh</td>
-                <td>elementum</td>
-                <td>imperdiet</td>
-                <td>Duis</td>
-            </tr>
-            <tr>
-                <td>1,007</td>
-                <td>sagittis</td>
-                <td>ipsum</td>
-                <td>Praesent</td>
-                <td>mauris</td>
-            </tr>
-            <tr>
-                <td>1,008</td>
-                <td>Fusce</td>
-                <td>nec</td>
-                <td>tellus</td>
-                <td>sed</td>
-            </tr>
-            <tr>
-                <td>1,009</td>
-                <td>augue</td>
-                <td>semper</td>
-                <td>porta</td>
-                <td>Mauris</td>
-            </tr>
-            <tr>
-                <td>1,010</td>
-                <td>massa</td>
-                <td>Vestibulum</td>
-                <td>lacinia</td>
-                <td>arcu</td>
-            </tr>
-            <tr>
-                <td>1,011</td>
-                <td>eget</td>
-                <td>nulla</td>
-                <td>Class</td>
-                <td>aptent</td>
-            </tr>
-            <tr>
-                <td>1,012</td>
-                <td>taciti</td>
-                <td>sociosqu</td>
-                <td>ad</td>
-                <td>litora</td>
-            </tr>
-            <tr>
-                <td>1,013</td>
-                <td>torquent</td>
-                <td>per</td>
-                <td>conubia</td>
-                <td>nostra</td>
-            </tr>
-            <tr>
-                <td>1,014</td>
-                <td>per</td>
-                <td>inceptos</td>
-                <td>himenaeos</td>
-                <td>Curabitur</td>
-            </tr>
-            <tr>
-                <td>1,015</td>
-                <td>sodales</td>
-                <td>ligula</td>
-                <td>in</td>
-                <td>libero</td>
-            </tr>
-        </tbody>
-    </table>
-</div>*@
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    </ul>
+    </div>
+    
+    <div class="mainindex">
+    
+    
+    <div class="welinfo">
+    <span><img src="images/sun.png" alt="天气" /></span>
+    <b>Admin早上好，欢迎使用信息管理系统</b>(admin@uimaker.com)
+    <a href="#">帐号设置</a>
+    </div>
+    
+    <div class="welinfo">
+    <span><img src="images/time.png" alt="时间" /></span>
+    <i>您上次登录的时间：2013-10-09 15:22</i> （不是您登录的？<a href="#">请点这里</a>）
+    </div>
+    
+    <div class="xline"></div>
+    
+    <ul class="iconlist">
+    
+    <li><img src="images/ico01.png" /><p><a href="#">管理设置</a></p></li>
+    <li><img src="images/ico02.png" /><p><a href="#">发布文章</a></p></li>
+    <li><img src="images/ico03.png" /><p><a href="#">数据统计</a></p></li>
+    <li><img src="images/ico04.png" /><p><a href="#">文件上传</a></p></li>
+    <li><img src="images/ico05.png" /><p><a href="#">目录管理</a></p></li>
+    <li><img src="images/ico06.png" /><p><a href="#">查询</a></p></li> 
+            
+    </ul>
+    
+    <div class="ibox"><a class="ibtn"><img src="images/iadd.png" />添加新的快捷功能</a></div>
+    
+    <div class="xline"></div>
+    <div class="box"></div>
+    
+    <div class="welinfo">
+    <span><img src="images/dp.png" alt="提醒" /></span>
+    <b>Uimaker信息管理系统使用指南</b>
+    </div>
+    
+    <ul class="infolist">
+    <li><span>您可以快速进行文章发布管理操作</span><a class="ibtn">发布或管理文章</a></li>
+    <li><span>您可以快速发布产品</span><a class="ibtn">发布或管理产品</a></li>
+    <li><span>您可以进行密码修改、账户设置等操作</span><a class="ibtn">账户管理</a></li>
+    </ul>
+    
+    <div class="xline"></div>
+    
+    <div class="uimakerinfo"><b>查看Uimaker网站使用指南，您可以了解到多种风格的B/S后台管理界面,软件界面设计，图标设计，手机界面等相关信息</b>(<a href="http://www.uimaker.com" target="_blank">www.uimaker.com</a>)</div>
+    
+    <ul class="umlist">
+    <li><a href="#">如何发布文章</a></li>
+    <li><a href="#">如何访问网站</a></li>
+    <li><a href="#">如何管理广告</a></li>
+    <li><a href="#">后台用户设置(权限)</a></li>
+    <li><a href="#">系统设置</a></li>
+    </ul>
+    
+    
+    </div>
+    
+    
+
+</body>
+
+</html>

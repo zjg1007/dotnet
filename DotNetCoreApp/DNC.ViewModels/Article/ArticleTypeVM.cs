@@ -10,10 +10,9 @@ namespace Dnc.ViewModels.Article
     public class ArticleTypeVM
     {
         public string ID { get; set; }
-
-        [Required(ErrorMessage = "类型名称不能为空。")]
         [Display(Name = "类型名称")]
-        [StringLength(20, ErrorMessage = "文章类型文字不能超过 20 个字符")]
+        [Required(ErrorMessage = "{0}不能为空。")]
+        [StringLength(20, ErrorMessage = "{0}文字不能超过 20 个字符")]
         public string Name { get; set; }   // 文章类型名称
 
         //[StringLength(500, ErrorMessage = "文章类型说明文字不能超过 500 个字符")]

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery.js"></script>
+
+
+</head>
+
+
+<body>
+    <table class="layui-hide" id="test" lay-filter="demo"></table>
+
+
+
+    <script>
+        layui.use('table', function () {
+            var table = layui.table;
+
+            //监听工具条
+            table.on('tool(demo)', function (obj) {
+                var data = obj.data;
+                if (obj.event === 'detail') {
+                    window.parent.rightFrame.location.href = "/Admin/Select?id=" + data.id; 
+                } else if (obj.event === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        $.post("/Admin/del", { id: data.id }, function (result) {
+                            if (result.isLogon) {
+                                layer.msg(result.message);
+                            } else { 
+                                layer.msg(result.message);
+                            }
+                            obj.del();
+                            layer.close(index);
+                        });
+                      
+                    });
+                } else if (obj.event === 'edit') {
+                    window.parent.rightFrame.location.href = "/Admin/Edit?id=" + data.id; 
+                }
+            });
+
+            table.render({
+                elem: '#test'
+                , url: '/Admin/rightData'
+                , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                , cols: [[
+                    { type: 'checkbox' },
+                    { field: 'name', width: 80, title: '文章标题' }
+                    , { field: 'subName', width: 80, title: '副标题', sort: true }
+                    , { field: 'publishDateTime', width: 80, title: '发布时间' }
+                    , { field: 'titleImage', title: '标题图片', width: '30%', minWidth: 100 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                    , { field: 'visitiSum', title: '访问量', sort: true }
+                    , { field: 'label', title: '所属标签', sort: true }
+                    , { field: 'articleTypeName', width: 137, title: '所属分类', sort: true }
+                    , { field: 'right', width: 178, sort: true, align: 'center', toolbar: '#barDemo' }
+                ]], page: true
+            });
+        });
+    </script>
+
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+</body>
+
+</html>

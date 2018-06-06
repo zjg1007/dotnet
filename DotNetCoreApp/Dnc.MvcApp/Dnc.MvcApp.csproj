@@ -13,6 +13,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\ueditor\**" />
+    <Content Remove="wwwroot\ueditor\**" />
+    <EmbeddedResource Remove="wwwroot\ueditor\**" />
+    <None Remove="wwwroot\ueditor\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Admin\form.cshtml" />
+    <Content Remove="Views\Admin\main.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Properties\PublishProfiles\AppSite-8063.pubxml" />
     <None Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Remove="Properties\PublishProfiles\FolderProfile1.pubxml" />
@@ -28,6 +40,8 @@
     <ProjectReference Include="..\Dnc.DataAccessRepository\Dnc.DataAccessRepository.csproj" />
     <ProjectReference Include="..\DNC.ViewModels\DNC.ViewModels.csproj" />
     <ProjectReference Include="..\Dnc.Entities\Dnc.Entities.csproj" />
+	<ProjectReference Include="..\Dnc.Entities\Dnc.Entities.csproj" />
+	<ProjectReference Include="..\UEditorNetCore\UEditorNetCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -81,5 +95,29 @@
     <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.2.301" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.2" />
   </ItemGroup>
+
+  
+     <ItemGroup>
+       <None Include="wwwroot\editor\kindeditor.js" />
+       <None Include="wwwroot\font\iconfont.svg" />
+       <None Include="wwwroot\lay\modules\carousel.js" />
+       <None Include="wwwroot\lay\modules\code.js" />
+       <None Include="wwwroot\lay\modules\element.js" />
+       <None Include="wwwroot\lay\modules\flow.js" />
+       <None Include="wwwroot\lay\modules\form.js" />
+       <None Include="wwwroot\lay\modules\jquery.js" />
+       <None Include="wwwroot\lay\modules\laydate.js" />
+       <None Include="wwwroot\lay\modules\layedit.js" />
+       <None Include="wwwroot\lay\modules\layer.js" />
+       <None Include="wwwroot\lay\modules\laypage.js" />
+       <None Include="wwwroot\lay\modules\laytpl.js" />
+       <None Include="wwwroot\lay\modules\mobile.js" />
+       <None Include="wwwroot\lay\modules\rate.js" />
+       <None Include="wwwroot\lay\modules\table.js" />
+       <None Include="wwwroot\lay\modules\tree.js" />
+       <None Include="wwwroot\lay\modules\upload.js" />
+       <None Include="wwwroot\lay\modules\util.js" />
+       <None Include="wwwroot\src\jquery.gvChart-1.0.1.js" />
+     </ItemGroup>
 
 </Project>

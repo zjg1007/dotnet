@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="~/assets/Hexo/css/style.css" rel="stylesheet" />
     <link href="~/assets/Default/styles/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <script src="~/assets/Hexo/js/jquery-1.10.2.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </head>
 
 <body>
@@ -59,18 +61,19 @@
                         <div class="tips-box hide">
                             <div class="tips-arrow"></div>
                             <ul class="tips-inner">
+                                <li><a asp-action="Index1" asp-controller="Test">写文章</a></li>
                                 <li>菜单</li>
                                 <li>日历</li>
                                 <li>标签</li>
                                 <li>友情链接</li>
                                 <li><a href="@ViewBag.AboutUrl">关于我</a></li>
-                                    <li><a href="javascript:$('#frmNewPost').submit();">发表文章</a></li>
-                                    <li><a asp-action="Index" asp-controller="Admin">站点管理</a></li>
-                                    <li><a asp-action="Catalog" asp-controller="Admin">分类管理</a></li>
-                                    <li><a href="javascript:$('#frmLogout').submit();">注销</a></li>
-                             
-                                    <li><a asp-action="Login" asp-controller="Admin">管理后台</a></li>
-                            
+                                <li><a href="javascript:$('#frmNewPost').submit();">发表文章</a></li>
+                                <li><a asp-action="Index" asp-controller="Admin">站点管理</a></li>
+                                <li><a asp-action="Catalog" asp-controller="Admin">分类管理</a></li>
+                                <li><a href="javascript:$('#frmLogout').submit();">注销</a></li>
+
+                                <li><a asp-action="Login" asp-controller="Admin">管理后台</a></li>
+
                             </ul>
                         </div>
                     </div>

@@ -11,6 +11,7 @@ using Dnc.DataAccessRepository.Context;
 using Dnc.DataAccessRepository.Repositories;
 using Dnc.DataAccessRepository.Seeds;
 using Essensoft.AspNetCore.Payment.Alipay;
+using UEditorNetCore;
 
 namespace Dnc.MvcApp
 {
@@ -31,6 +32,9 @@ namespace Dnc.MvcApp
         // 运行时被掉用的方法，用于向程序容器注入服务
         public void ConfigureServices(IServiceCollection services)
         {
+            //第一个参数为配置文件路径，默认为项目目录下config.json
+            //第二个参数为是否缓存配置文件，默认false
+            services.AddUEditorService();
             // 添加 MVC 框架
             services.AddMvc(options=> 
             {
@@ -48,7 +52,17 @@ namespace Dnc.MvcApp
                 // 支付宝公钥
                 opt.RsaPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqx3sTkM63I3hcDKWSWwegy02TmJw5Vcq1NoglDuN9J9A53UycpyAnkCedslG1CID1xwVwEkeoivEvuytu3CEkdMmFM84q65QAAzBa56cd1BykI35Xkv19g/xOsim5QxRfQYG/GlSpW2T++cDA6QI3f5KOnaEL8tUYm6/EkhW2s2WEAg3Xnk28Q2hBM/PxGxfPpThVP9x5b7X26mQ5flfLgi7cwoJZdlfM6kZzKiupxv3yaePaM4onhz6ecW4Z+Mamx9T0ELhepL6OQkw45Nbvzma/kUkFOIOPNP3GdJxFc8LnGy6cmxBb5PMjIbBADj9rMjixa7agifP213iftOOZQIDAQAB";
             });
-
+            // 添加跨域访问授权处理
+            //配置跨域处理
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Dnc", builder =>
+                {
+                    builder.AllowAnyOrigin() //允许任何来源的主机访问
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+            });
             // 注册配置实例
             services.Configure<AlipayOptions>(Configuration.GetSection("Alipay"));
             // 注入自定义的用户认证过滤器
