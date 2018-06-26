@@ -10,8 +10,6 @@
     <AssemblyName>UEditorNetCore</AssemblyName>
     <PackageId>UEditorNetCore</PackageId>
     <PackageProjectUrl>https://github.com/durow/UEditorNetCore</PackageProjectUrl>
-    <NetStandardImplicitPackageVersion>2.0.1</NetStandardImplicitPackageVersion>
-    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>

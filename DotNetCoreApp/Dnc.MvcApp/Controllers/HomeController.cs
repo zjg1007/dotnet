@@ -25,6 +25,7 @@ namespace Dnc.MvcApp.Controllers
         //[Route("首页")]
         //[Route("首页/Index")]
         //[HttpGet("{id}")]
+        
         public async Task<IActionResult> Index( int id=1)
         {
             if (id==0) id = 1;
