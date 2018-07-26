@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Dnc.MvcApp.ViewInjections
 {
-    public class LayerPage
+    public class LayerPage<T>
     {
         public int code { get; set; }
         public string msg { get; set; }
         public int count { get; set; }
-        public List<ArticleVM> data { get; set; }
+        public List<T> data { get; set; }
     }
 }

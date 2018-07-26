@@ -11,6 +11,14 @@
 
 
 <body>
+    <div class="demoTable" style="margin:10px 0 0 10px;">
+        搜索名称：
+        <div class="layui-inline">
+            <input class="layui-input" name="id" id="demoReload" autocomplete="off" />
+        </div>
+        <button class="layui-btn" id="searchLabel" data-type="reload">搜索</button>
+        <button class="layui-btn" id="plDel" data-type="getCheckData">批量删除</button>
+    </div>
     <table class="layui-hide" id="test" lay-filter="demo"></table>
 
 
@@ -23,41 +31,87 @@
             table.on('tool(demo)', function (obj) {
                 var data = obj.data;
                 if (obj.event === 'detail') {
-                    window.parent.rightFrame.location.href = "/Admin/Select?id=" + data.id; 
+                    window.parent.rightFrame.location.href = "/Admin/Select?id=" + data.id;
                 } else if (obj.event === 'del') {
                     layer.confirm('真的删除行么', function (index) {
                         $.post("/Admin/del", { id: data.id }, function (result) {
                             if (result.isLogon) {
                                 layer.msg(result.message);
-                            } else { 
+                            } else {
                                 layer.msg(result.message);
                             }
                             obj.del();
                             layer.close(index);
                         });
-                      
+
                     });
                 } else if (obj.event === 'edit') {
-                    window.parent.rightFrame.location.href = "/Admin/Edit?id=" + data.id; 
+                    window.parent.rightFrame.location.href = "/Admin/Edit?id=" + data.id;
                 }
             });
 
             table.render({
                 elem: '#test'
                 , url: '/Admin/rightData'
+                , height: 'full-200'
                 , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                 , cols: [[
                     { type: 'checkbox' },
-                    { field: 'name', width: 80, title: '文章标题' }
-                    , { field: 'subName', width: 80, title: '副标题', sort: true }
+                    { field: 'name', width: 130, title: '文章标题' }
+                    , { field: 'subName', width: 130, title: '副标题', sort: true }
                     , { field: 'publishDateTime', width: 80, title: '发布时间' }
-                    , { field: 'titleImage', title: '标题图片', width: '30%', minWidth: 100 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                    , { field: 'titleImage', title: '标题图片', width: '20%', minWidth: 100 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                     , { field: 'visitiSum', title: '访问量', sort: true }
                     , { field: 'label', title: '所属标签', sort: true }
                     , { field: 'articleTypeName', width: 137, title: '所属分类', sort: true }
                     , { field: 'right', width: 178, sort: true, align: 'center', toolbar: '#barDemo' }
                 ]], page: true
+                , id: 'testReload'
             });
+            //按钮功能获取数据
+            var $ = layui.$, active = {
+                getCheckData: function () { //获取选中数据
+                    var checkStatus = table.checkStatus('testReload')
+                        , data = checkStatus.data;
+                    //判断用户是否选择了数据,选择了执行删除功能
+                    if (data.length > 0) {
+                        layer.confirm('真的全部删除么？', function (index) {
+                            layer.close(index);
+                            $.post("/Admin/del", { batchid: JSON.stringify(data) }, function (result) {
+                                if (result.isLogon) {
+                                    layer.msg(result.message);
+                                } else {
+                                    layer.msg(result.message);
+                                }
+                                //更新数据表格
+                                table.reload('testReload');
+                            });
+
+                        });
+                    } else {
+                        layer.msg("请选择您要删除的数据");
+                    }
+                },
+                reload: function () {
+                    var demoReload = $('#demoReload');
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开s始
+                        }
+                        , where: {
+                            key: {
+                                name: demoReload.val()
+                            }
+                        }
+                    });
+                }
+            };
+            $('.demoTable .layui-btn').on('click', function () {
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+
         });
     </script>
 

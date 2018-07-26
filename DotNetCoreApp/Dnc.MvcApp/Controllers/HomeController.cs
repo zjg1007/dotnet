@@ -66,11 +66,11 @@ namespace Dnc.MvcApp.Controllers
             return View( boVMCollection.OrderByDescending(b => b.PublishDateTime).Skip((pageOption.CurrentPage - 1) * pageOption.PageSize).Take(pageOption.PageSize).ToList());
         }
 
-        [Route("首页/关于我们")]
-        public IActionResult About()
+       
+        public IActionResult About(string id)
         {
-            ViewData["Message"] = "这是 关于我们 页面的内容。";
-            return View();
+            var data = _Service.GetSingleBy<NewsArticle>(m => m.ID == id,m=>m.ArticleType);
+            return View(data);
         }
 
         public IActionResult Contact()

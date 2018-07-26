@@ -1,0 +1,82 @@
+﻿@model Dnc.Entities.Article.Label
+
+<style type="text/css">
+    .zlb {
+        width: 100px;
+        height: 40px;
+        color: #000000;
+        float: left;
+        text-align: center;
+        line-height: 40px;
+        font-size: 12px;
+        margin-left: 10px;
+        border: 1px dashed #808080;
+        font-family: 'Microsoft YaHei';
+        cursor: pointer;
+    }
+
+    .clickB {
+        background: #01AAED;
+        color: #fff;
+        border: 1px solid #01AAED;
+    }
+</style>
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">标签管理</a></li>
+    </ul>
+</div>
+
+<div class="formbody">
+
+    <div class="formtitle"><span>基本信息</span></div>
+    <form id="form">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <ul class="forminfo">
+            <li>
+                <label >标签名称</label><input asp-for="Name" name="Name" type="text" class="dfinput" /><i>标题不能超过30个字符</i>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </li>
+        </ul>
+        <label>&nbsp;</label><input name="" type="button" id="btn" class="btn" value="添加" />
+    </form>
+
+</div>
+
+<script type="text/javascript">
+        $(function () {
+            //一般直接写在一个js文件中
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer
+                    , form = layui.form;
+
+                $("#btn").on("click", function () {
+
+                    //加载层-默认风格
+                    layer.load();
+                    $('#form').ajaxSubmit(      //ajax方式提交表单
+                        {
+                            url: '/Admin/insertLabel',
+                            type: 'post',
+                            dataType: 'json',
+                            beforeSubmit: function () { },
+                            data: {
+                            },
+                            success: function (data) {
+                                if (data.isLogon) {
+                                    layer.msg(data.message);
+                                    layer.closeAll('loading');
+                                    window.parent.rightFrame.location.href = "/Admin/imglist";
+                                } else {
+                                    layer.msg(data.message);
+                                    layer.closeAll('loading');
+                                }
+
+                            }
+                        });
+                });
+            });
+        });
+</script>

@@ -1,7 +1,51 @@
-﻿@{
-    ViewData["Title"] = "About";
-}
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+﻿@model Dnc.Entities.Article.NewsArticle
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrap">
+            <div class="content">
+                <header class="article-header">
+                    <h1 class="article-title"><a href="#">@Model.Name</a></h1>
+                    <div class="article-meta ">
+                        <span class="item category"><a href="# ">@Model.SubName</a></span>
+                        <span class="item time ">@Model.PublishDateTime</span>
+                        <span class="item tags">标签：<a href="#">架构</a><a href="#">架构</a><a href="#">架构</a></span>
+                        <span class="item views"><i class="glyphicon glyphicon-eye-open"></i> @Model.VisitiSum</span>
+                    </div>
+                </header>
+                <div>
+                     @Html.Raw(@Model.Content)
+                </div>
+                <div class="title">
+                    <h3>评论</h3>
+                </div>
+                <div class="article-comment">
+                    <form action="" method="POST">
+                        <input type="text" class="form-control" placeholder="您的昵称（必填）">
+                        <input type="text" class="form-control" placeholder="您的邮箱或联系电话（非必填）">
+                        <textarea class="form-control" rows="3" placeholder="您的评论或留言（必填）"></textarea>
+                        <button type="button" class="btn btn-default">发布评论</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer ">
+        <div class="container ">
+            <p>Copyright &copy; 2018.Reedo.Inc All rights reserved</p>
+        </div>
+    </div>
 
-<p>Use this area to provide additional information.</p>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js "></script>
+                    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>
