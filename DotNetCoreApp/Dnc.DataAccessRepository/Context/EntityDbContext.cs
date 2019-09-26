@@ -2,6 +2,7 @@
 using Dnc.Entities.Article;
 using Dnc.Entities.Organization;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
 
 namespace Dnc.DataAccessRepository.Context
 {
@@ -20,10 +21,10 @@ namespace Dnc.DataAccessRepository.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             {
-               /* optionsBuilder.UseSqlServer(
-                    @"Server=SC-201804102054;Initial Catalog=CPMD_Team20140208; uid=sa;pwd=123;MultipleActiveResultSets=True");
-                base.OnConfiguring(optionsBuilder);*/
-                optionsBuilder.UseMySQL(@"Server=47.98.212.255;port=3306;database=cpmd_team20140206;uid=zjg;pwd=123456;SslMode=None");
+                //optionsBuilder.UseSqlServer(
+                //    @"Server=.;Initial Catalog=CPMD_Team20140207; uid=sa;pwd=~zjg10077854;MultipleActiveResultSets=True");
+                //base.OnConfiguring(optionsBuilder);
+                optionsBuilder.UseMySql(@"Server=47.103.6.220;port=3306;database=cpmd_team20140207;uid=zjg;pwd=123456;charset=utf-8;SslMode=None");
                 base.OnConfiguring(optionsBuilder);
 
             }
